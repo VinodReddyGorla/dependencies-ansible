@@ -1,0 +1,7 @@
+---
+ - name: Failed hence disk space is less
+   shell: fdisk -l | grep Disk | grep /dev/sda | cut -d " " -f3
+   register: disk
+ - debug: msg="avialable disk space is  {{ disk.stdout }} G   Minimum required disk space  is {{ diskspace  }} G"
+   failed_when: disk.stdout < diskspace
+

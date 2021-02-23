@@ -1,0 +1,5 @@
+---
+  - name: checking memory size...
+    debug: var=ansible_memory_mb
+    debug: msg="Total avilable RAM size is {{ ansible_memory_mb.real.total }} MB  Minimum required RAM size is {{required_memory}} MB "
+    failed_when: ansible_memory_mb.real.total <  required_memory

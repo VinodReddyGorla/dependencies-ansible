@@ -1,0 +1,13 @@
+---
+   - name: Fail task no dns entry-1
+     shell: if nslookup systemongrid.com &>/dev/null; [ $? -eq 0 ]; then echo 0; else echo 1; fi
+     register: dns
+     failed_when: dns.stdout == '1'
+   - name: Fail task no dns entry-2
+     shell: if nslookup google.com &>/dev/null; [ $? -eq 0 ]; then echo 0; else echo 1; fi
+     register: dns
+     failed_when: dns.stdout == '1'
+   - name: Fail task no dns entry-3
+     shell: if nslookup microsoft.com &>/dev/null; [ $? -eq 0 ]; then echo 0; else echo 1; fi
+     register: dns
+     failed_when: dns.stdout == '1'

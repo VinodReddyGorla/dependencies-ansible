@@ -1,0 +1,7 @@
+---
+  - name: failed required for less  cpu cores
+    shell: cat /proc/cpuinfo | grep processor | wc -l
+    register: core
+  - debug: msg="NOumber of cores avilable  {{ core.stdout }}   Minimum required number of cores  {{ cores }} ."
+    failed_when: core.stdout < cores
+

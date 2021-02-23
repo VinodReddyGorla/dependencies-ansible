@@ -1,0 +1,14 @@
+---
+# tasks file for dependencies 
+
+################  Ansible first checks the ditribution of remote server if distribution is CENTOS  then execurtes below yml ##############################
+
+ - include: no_of_cores.yml
+ - include: disk.yml
+ - include: cpu_speed.yml
+ - include: ramsize.yml
+ - include: dns.yml 
+ - include: firewalld.yml
+ - include: yum.yml
+ - include: selinux.yml
+

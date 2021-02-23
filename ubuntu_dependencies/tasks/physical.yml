@@ -1,0 +1,13 @@
+---
+- name: checking cpu speed
+  include: /etc/ansible/roles/ubuntu_dependencies/tasks/cpu_speed.yml
+- name: checking number of cores
+  include: /etc/ansible/roles/ubuntu_dependencies/tasks/no_of_cores.yml
+- name: checking ram size
+  include: /etc/ansible/roles/ubuntu_dependencies/tasks/ramsize.yml
+- name: checking virtualization type
+  include: /etc/ansible/roles/ubuntu_dependencies/tasks/virtual.yml
+- name: installing firewalld
+  include: /etc/ansible/roles/ubuntu_dependencies/tasks/firewalld.yml
+- name: checking se linux
+  include: /etc/ansible/roles/ubuntu_dependencies/tasks/selinux.yml

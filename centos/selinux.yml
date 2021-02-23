@@ -1,0 +1,13 @@
+---
+   - name: selinux status
+     shell: getenforce
+     register: motd_result
+   - name: disable selinux
+     shell: setenforce 0
+     when: motd_result.stdout.find('Enforcing') != -1
+   - name: disable selinux in configfile
+     lineinfile:
+      path: /etc/selinux/config
+      regexp: '^SELINUX='
+      line: SELINUX=disabled
+

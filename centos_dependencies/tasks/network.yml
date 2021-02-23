@@ -1,0 +1,6 @@
+---
+   - name: Fail task when the command error output prints FAILED
+     shell: systemctl status network | grep Active | cut -d" " -f5
+     register: command_result
+     failed_when: "'inactive' in command_result.stderr"
+

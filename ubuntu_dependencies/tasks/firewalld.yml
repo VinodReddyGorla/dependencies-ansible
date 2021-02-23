@@ -1,0 +1,10 @@
+---
+- name: checking firewalld installed or not
+  shell: dpkg -s firewalld | grep Status | cut -d" " -f2
+  register: deb_check
+- debug: msg="Firewalld status    {{ deb_check }}"
+- name: installing firewalld
+  apt:
+    name: firewalld
+    state: installed
+  when: deb_check.stdout == 'deinstall'

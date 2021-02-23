@@ -1,0 +1,7 @@
+---
+   - name: selinux status 
+     shell: getenforce
+     register: motd_result
+   - name: disable selinux
+     shell: setenforce 0
+     when: motd_result.stdout == 'Enforcing'

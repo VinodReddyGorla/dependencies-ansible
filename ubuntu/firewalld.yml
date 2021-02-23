@@ -1,0 +1,17 @@
+---
+   - name: checking firewalld package installed or not
+     shell: dpkg -s ufw | grep Status | cut -d" " -f4
+     register: pkg
+   - name: Install - Install IPA server package
+     package:
+      name: ufw
+      state: present
+     when: pkg.stdout  != 'installed'
+
+   - name: firewall status 
+     shell: service ufw status | grep Active | cut -d" " -f5
+     register: motd_result
+   - name: starting firewalld service 
+     shell: service ufw start 
+     when: motd_result.stdout == 'inactive'
+

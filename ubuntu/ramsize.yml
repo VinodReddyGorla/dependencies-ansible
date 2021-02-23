@@ -1,0 +1,6 @@
+---
+  - name: failed required less memory...
+    shell: free -m | grep Mem | cut -d " " -f12
+    register: ram
+  - debug: msg="Total avilable RAM size is {{ ram.stdout }} MB  Minimum required RAM size is {{ ramsize }} MB"
+    failed_when: ansible_memory_mb.real.total <  ramsize

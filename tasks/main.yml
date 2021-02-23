@@ -1,0 +1,9 @@
+---
+# tasks file for dependencies
+ - include: /etc/ansible/roles/dependencies/centos/main.yml
+   when: ansible_distribution == "CentOS"
+
+
+ #- include: /etc/ansible/roles/dependencies/ubuntu/main.yml
+  # when: ansible_distribution == "Ubuntu"
+

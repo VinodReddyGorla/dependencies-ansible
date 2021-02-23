@@ -1,0 +1,7 @@
+---
+   - name: failed required Virtualization type required
+     shell: lscpu | grep -E  '^Virtualization' | cut -d" " -f9
+     register: virtual
+   - debug: msg="Virtualization type   {{ virtual.stdout }}"
+     failed_when: virtual.stdout != 'VT-x'
+

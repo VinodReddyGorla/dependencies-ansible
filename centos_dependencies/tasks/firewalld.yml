@@ -1,0 +1,15 @@
+---
+   - name: checking firewalld package installed or not
+     yum:
+        list=firewalld
+     register: pkg
+   - name: installing the latest version of firewalld
+     action: yum pkg=firewalld state=installed
+     when: pkg.results[0].yumstate != 'installed'
+   - name: firewall status 
+     shell: systemctl status firewalld | grep Active | cut -d" " -f5
+     register: motd_result
+   - name: starting firewalld service 
+     shell: systemctl start firewalld
+     when: motd_result.stdout == 'inactive'
+

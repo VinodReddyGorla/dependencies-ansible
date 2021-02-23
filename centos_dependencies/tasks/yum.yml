@@ -1,0 +1,6 @@
+---
+   - name: Failed yum not configured
+     shell: if yum search wget &> /dev/null;[ $? -eq 0 ]; then echo 0; else echo 1; fi
+     register: yum
+     failed_when: yum.stdout == '1'
+

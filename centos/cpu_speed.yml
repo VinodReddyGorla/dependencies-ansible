@@ -1,0 +1,7 @@
+---
+   - name: failed required atleast 1GH processor required 
+     shell: lscpu | grep MHz | tr -s [:space:] ' ' | cut -d " " -f3
+     register: cpu
+   - debug: msg="the speed ofthe processor {{ cpu.stdout }} HZ   Minimum required speed is {{ cpuspeed }}  HZ"
+     failed_when: cpu.stdout < cpuspeed
+

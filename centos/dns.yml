@@ -1,0 +1,34 @@
+---
+
+
+
+   - name: Fail task no dns entry
+     shell: if nslookup google.com &>/dev/null; [ $? -eq 0 ]; then echo 0; else echo 1; fi
+     register: dns
+
+   - name: mention dns in /etc/resolv.conf if dns returns output ==1
+     lineinfile:
+      path: /etc/resolv.conf
+      line: 'nameserver    "{{ dnsip }}"'
+     when: dns.stdout == '1'
+
+   - name: Fail task no dns entry
+     shell: if nslookup yahoo.com &>/dev/null; [ $? -eq 0 ]; then echo 0; else echo 1; fi
+     register: dns
+
+   - name: mention dns in /etc/resolv.conf if dns returns output ==1
+     lineinfile:
+      path: /etc/resolv.conf
+      line: 'nameserver    "{{ dnsip }}"'
+     when: dns.stdout == '1'
+
+
+   - name: Fail task no dns entry
+     shell: if nslookup dudckduckgo.com &>/dev/null; [ $? -eq 0 ]; then echo 0; else echo 1; fi
+     register: dns
+
+   - name: mention dns in /etc/resolv.conf if dns returns output ==1
+     lineinfile:
+      path: /etc/resolv.conf
+      line: 'nameserver    "{{ dnsip }}"'
+     when: dns.stdout == '1'

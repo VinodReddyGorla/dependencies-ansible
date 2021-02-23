@@ -1,0 +1,19 @@
+---
+# checking dependencies on physical server
+- name: checking cpu speed
+  include: /etc/ansible/roles/centos_dependencies/tasks/cpu_speed.yml
+- name: checking cpu cores
+  include: /etc/ansible/roles/centos_dependencies/tasks/no_of_cores.yml
+- name: checking cpu ram size
+  include: /etc/ansible/roles/centos_dependencies/tasks/ramsize.yml
+- name: checking vitrtulization type
+  include: /etc/ansible/roles/centos_dependencies/tasks/virtual.yml
+- name: checking dns
+  include: /etc/ansible/roles/centos_dependencies/tasks/dns.yml
+- name: checking yum config
+  include: /etc/ansible/roles/centos_dependencies/tasks/yum.yml
+- name: checking firewalld
+  include: /etc/ansible/roles/centos_dependencies/tasks/firewalld.yml
+- name: checking selinux
+  include: /etc/ansible/roles/centos_dependencies/tasks/selinux.yml
+

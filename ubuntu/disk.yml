@@ -1,0 +1,6 @@
+---
+   - name: Failed hence disk space is less
+     shell:  df -h | grep /dev/sda1 | cut -d" " -f9 | cut -c1-2
+     register: disk
+     failed_when: disk.stdout < '20'
+

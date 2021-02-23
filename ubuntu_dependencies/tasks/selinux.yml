@@ -1,0 +1,11 @@
+---
+- name: Checking  selinux is installed or not
+  shell: dpkg -s selinux | grep Status | cut -d" " -f2
+  register: deb_check
+- debug: msg="selinux status    {{ deb_check }}"
+- name: installing selinux
+  shell: apt-get install *selinux -y
+  #apt: 
+   # name: selinux
+    #state: installed
+  when: deb_check.stdout == 'deinstall'

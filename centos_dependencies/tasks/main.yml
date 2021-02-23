@@ -1,0 +1,9 @@
+---
+- name: failed required Virtualization type required
+  shell: hostnamectl | grep Chassis | cut -d" " -f13
+  register: chassis
+- debug: msg="Chassis  type is  {{ chassis.stdout }}"
+- include: physical.yml
+  when: chassis.stdout == 'server'
+- include: vm.yml
+  when: chassis.stdout == 'vm'
